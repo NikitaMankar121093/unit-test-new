@@ -74,7 +74,7 @@ stages{
                 }
                 post{
                          always{
-                         mail to: "harshal.tawade@bluebinaries.com, shreya.dhanbhar@bluebinaries.com, nikita.mankar@bluebinaries.com",
+                         mail to: "shreya.dhanbhar@bluebinaries.com, nikita.mankar@bluebinaries.com",
                          subject: "Artifacts Uploaded",
                          body: "${BUILD_NUMBER}_Passed! Uploaded Artifacts to Nexus repo successfully"
                          }
