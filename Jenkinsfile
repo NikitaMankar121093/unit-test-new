@@ -94,7 +94,7 @@ stages{
       }
                 post{
                         failure{
-                        mail to: "harshal.tawade@bluebinaries.com, shreya.dhanbhar@bluebinaries.com, nikita.mankar@bluebinaries.com",
+                        mail to: "shreya.dhanbhar@bluebinaries.com, nikita.mankar@bluebinaries.com",
                         subject: "Failure",
                         body: "${BUILD_NUMBER}_FAIL!"
                             }
