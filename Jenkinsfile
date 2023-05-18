@@ -70,7 +70,7 @@ stages{
             {
                 steps
                 {
-                    nexusArtifactUploader artifacts: [[artifactId: '${BUILD_NUMBER}', classifier: 'build.tar.gz', file: '/var/lib/jenkins/workspace/unit-test/build.tar.gz', type: 'tar']], credentialsId: 'nexus', groupId: 'cmake-repo', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'unit-test', version: '1'
+                    nexusArtifactUploader nexusArtifactUploader artifacts: [[artifactId: '${BUILD_NUMBER}', classifier: '', file: '/var/lib/jenkins/workspace/unit-test/build.tar.gz', type: 'tar']], credentialsId: '14e82302-00d5-404d-bdf1-0e861e0b8fdf', groupId: 'repo', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'unit-test', version: '03'
                 }
                 post{
                          always{
