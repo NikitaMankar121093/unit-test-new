@@ -60,7 +60,7 @@ stages{
             {
                 steps   
                 {
-                    sh 'testNG()'
+                    testNG reportFilenamePattern: '/var/lib/jenkins/workspace/unit-test/build/tst ./ExampleProject_tst '
                 }
             }
         
