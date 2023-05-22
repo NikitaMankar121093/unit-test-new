@@ -7,7 +7,7 @@ stages{
                 steps  
                 {
                     cleanWs()
-                    sh 'cd var/lib/jenkins/workspace/*'
+                    sh 'cd /var/lib/jenkins/workspace/*'
                 }
             }
         stage('Cloning')
