@@ -55,7 +55,15 @@ stages{
                 }
                 
             }
-
+    
+        stage('TeastNg Report')
+            {
+                steps   
+                {
+                    sh 'testNG()'
+                }
+            }
+        
         stage('Build tar')
             {
                 steps
