@@ -60,8 +60,8 @@ stages{
             {
                 steps   
                 {
-                    testNG reportFilenamePattern: '/var/lib/jenkins/workspace/unit-test/build/tst' 
-                    sh './ExampleProject_tst --gtest_output=xml'
+                    testNG reportFilenamePattern: '/var/lib/jenkins/workspace/unit-test/build/tst ./ExampleProject_tst --gtest_output=xml' 
+                    
                 }
             }
         
