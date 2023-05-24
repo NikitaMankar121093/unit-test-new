@@ -1,6 +1,6 @@
 pipeline
     {
-        agent any
+       agent any
 stages{
         stage('clean workspace')
             {
@@ -60,7 +60,8 @@ stages{
             {
                 steps   
                 {
-                    testNG reportFilenamePattern: '/var/lib/jenkins/workspace/unit-test/build/tst && ./ExampleProject_tst --gtest_output=xml' 
+                    sh 'cd /var/lib/jenkins/workspace/unit-test/build/tst && ./ExampleProject_tst --gtest_output=xml'
+                    testNG reportFilenamePattern: '/var/lib/jenkins/workspace/unit-test/build/tst/test_detail.xml' 
                     
                 }
             }
