@@ -71,7 +71,7 @@ stages{
                 steps
                 {
                     //building tar directory 
-                    sh 'cd /var/lib/jenkins/workspace/unit-test-new/ && tar -czvf /var/lib/jenkins/workspace/unit-test-new/build.tar.gz /var/lib/jenkins/workspace/unit-test/build/'
+                    sh 'cd /var/lib/jenkins/workspace/unit-test-new/ && tar -czvf /var/lib/jenkins/workspace/unit-test-new/build.tar.gz /var/lib/jenkins/workspace/unit-test-new/build/'
                     echo "tar directory generated"
                 }
             }    
