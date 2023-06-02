@@ -16,10 +16,10 @@ stages{
                 {  
                     echo "Clone started"
                     // Clone the repository using Git
-                    sh 'cd /var/lib/jenkins/workspace/ && git clone https://github.com/shredhanbhar/unit-test.git'
-                    sh 'rm -rf /var/lib/jenkins/workspace/unit-test/lib'
-                    sh 'mkdir /var/lib/jenkins/workspace/unit-test/lib'
-                    sh 'cd /var/lib/jenkins/workspace/unit-test/lib/ && git clone https://github.com/google/googletest.git'
+                    sh 'cd /var/lib/jenkins/workspace/ && git clone https://github.com/NikitaMankar121093/unit-test-new'
+                    sh 'rm -rf /var/lib/jenkins/workspace/unit-test-new/lib'
+                    sh 'mkdir /var/lib/jenkins/workspace/unit-test-new/lib'
+                    sh 'cd /var/lib/jenkins/workspace/unit-test-new/lib/ && git clone https://github.com/google/googletest.git'
                     echo "Clone done"
                 }
             }
@@ -32,7 +32,7 @@ stages{
                     // Run the build command for your C/C++ project
                     echo "Build started"
                    // sh 'mkdir -r /var/lib/jenkins/workspace/unit-test/build'
-                    sh 'cd /var/lib/jenkins/workspace/unit-test/build/ && cmake .. && make'
+                    sh 'cd /var/lib/jenkins/workspace/unit-test-new/build/ && cmake .. && make'
                     echo "Build ended"
                 }
                      post{
@@ -51,7 +51,7 @@ stages{
                 steps
                 {
                     // Run unit tests for your project
-                    sh 'cd /var/lib/jenkins/workspace/unit-test/build/ && make test'
+                    sh 'cd /var/lib/jenkins/workspace/unit-test-new/build/ && make test'
                 }
                 
             }
@@ -60,7 +60,7 @@ stages{
             {
                 steps   
                 {
-                    sh 'cd /var/lib/jenkins/workspace/unit-test/build/tst && ./ExampleProject_tst --gtest_output=xml'
+                    sh 'cd /var/lib/jenkins/workspace/unit-test-new/build/tst && ./ExampleProject_tst --gtest_output=xml'
                     testNG reportFilenamePattern: '/var/lib/jenkins/workspace/unit-test/build/tst/test_detail.xml' 
                     
                 }
@@ -71,7 +71,7 @@ stages{
                 steps
                 {
                     //building tar directory 
-                    sh 'cd /var/lib/jenkins/workspace/unit-test/ && tar -czvf /var/lib/jenkins/workspace/unit-test/build.tar.gz /var/lib/jenkins/workspace/unit-test/build/'
+                    sh 'cd /var/lib/jenkins/workspace/unit-test-new/ && tar -czvf /var/lib/jenkins/workspace/unit-test-new/build.tar.gz /var/lib/jenkins/workspace/unit-test/build/'
                     echo "tar directory generated"
                 }
             }    
@@ -80,7 +80,7 @@ stages{
             {
                 steps
                 {
-                    nexusArtifactUploader artifacts: [[artifactId: '${BUILD_NUMBER}', classifier: '', file: '/var/lib/jenkins/workspace/unit-test/build.tar.gz', type: 'tar']], credentialsId: '14e82302-00d5-404d-bdf1-0e861e0b8fdf', groupId: 'repo', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'unit-test', version: '03'
+                    nexusArtifactUploader artifacts: [[artifactId: '${BUILD_NUMBER}', classifier: '', file: '/var/lib/jenkins/workspace/unit-test-new/build.tar.gz', type: 'tar']], credentialsId: '14e82302-00d5-404d-bdf1-0e861e0b8fdf', groupId: 'repo', nexusUrl: 'localhost:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'unit-test', version: '03'
                 }
                 post{
                          always{
@@ -96,8 +96,8 @@ stages{
             {
                 steps
                 {
-                    sh 'cd /var/lib/jenkins/workspace/unit-test/build/ && make docs'
-                    sh 'chmod -R 777 /var/lib/jenkins/workspace/unit-test/*'        
+                    sh 'cd /var/lib/jenkins/workspace/unit-test-new/build/ && make docs'
+                    sh 'chmod -R 777 /var/lib/jenkins/workspace/unit-test-new/*'        
                     echo "index.html created"         
                 }
             }
